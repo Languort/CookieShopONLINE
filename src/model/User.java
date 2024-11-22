@@ -15,6 +15,16 @@ public class User {
     private boolean isAdmin = false;
     private boolean isValidate = false;
 
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+
+
     public String getUsername() {return username;}
     public String getPassword() {return password;}
     public String getEmail() {return email;}

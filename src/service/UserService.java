@@ -6,6 +6,7 @@ import model.User;
 import java.sql.SQLException;
 
 public class UserService {
+
     private UserDao uDao = new UserDao();
 
     public boolean register(User user) {
@@ -27,5 +28,35 @@ public class UserService {
 
         return false;
     }
+
+    public User login(String ue, String password) {
+        User user = null;
+        try {
+            user = uDao.selectByUsernamePassword(ue, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (user != null) {
+            return user;
+        }
+        try{
+            user=uDao.selectByEmailPassword(ue,password);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        if(user!=null){
+            return null;
+        }
+
+
+        return null;
+
+    }
+
+
+
+
+
+
 }
 
